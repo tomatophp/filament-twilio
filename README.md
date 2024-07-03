@@ -1,4 +1,4 @@
-![Screenshot](https://raw.githubusercontent.com/tomatophp/filament-twilio/master/arts/3x1io-tomato-fcm.jpg)
+![Screenshot](https://raw.githubusercontent.com/tomatophp/filament-twilio/master/arts/3x1io-tomato-twilio.jpg)
 
 # Filament Twilio
 

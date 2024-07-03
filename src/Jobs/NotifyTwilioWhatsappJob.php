@@ -24,7 +24,7 @@ class NotifyTwilioWhatsappJob implements ShouldQueue
 
     public ?Model $user;
     public ?string $message;
-    public ?bool $sendToDatabase = true;
+    public ?string $mediaURL;
 
     /**
      * Create a new notification instance.
@@ -35,6 +35,7 @@ class NotifyTwilioWhatsappJob implements ShouldQueue
     {
         $this->user = $arrgs['user'];
         $this->message  = $arrgs['message'];
+        $this->mediaURL  = $arrgs['mediaURL']??null;
     }
 
 
@@ -46,7 +47,11 @@ class NotifyTwilioWhatsappJob implements ShouldQueue
     public function handle(): void
     {
         if($this->user->phone){
-            Twilio::send($this->user->phone, $this->message);
+            Twilio::send(
+                phone: $this->user->phone,
+                message: $this->message,
+                mediaURL: $this->mediaURL
+            );
         }
     }
 }

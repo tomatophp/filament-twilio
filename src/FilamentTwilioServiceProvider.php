@@ -23,11 +23,12 @@ class FilamentTwilioServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        Notification::macro('sendToTwilioWhatsapp', function (Model $user): static
+        Notification::macro('sendToTwilioWhatsapp', function (Model $user, ?string $mediaURL=null): static
         {
             /** @var Notification $this */
             $user->notifyTwilioWhatsapp(
-                message: $this->body
+                message: $this->body,
+                mediaURL: $mediaURL
             );
 
             return $this;

@@ -15,24 +15,27 @@ class Twilio
     /**
      * @param string $phone
      * @param string $message
+     * @param ?string $mediaURL
      * @return string
      * @throws ConfigurationException
      * @throws TwilioException
      */
-    public static function send(string $phone, string $message): string
+    public static function send(string $phone, string $message, ?string $mediaURL = null): string
     {
         $sid    = config('filament-twilio.twilio_sid');
         $token  = config('filament-twilio.twilio_token');
         $twilio = new Client($sid, $token);
 
-        $message = $twilio->messages
-            ->create("whatsapp:" . $phone, // to
-                array(
-                    "from" => "whatsapp:". config('filament-twilio.twilio_sender'),
-                    "body" => $message
-                )
-      );
+        $body = [];
 
-      return $message->sid;
+        if($mediaURL){
+            $body["mediaUrl"] = $mediaURL;
+        }
+
+        $body["from"] = "whatsapp:". config('filament-twilio.twilio_sender');
+        $body["body"] = $message;
+
+        $message = $twilio->messages->create("whatsapp:" . $phone,$body);
+        return $message->sid;
     }
 }

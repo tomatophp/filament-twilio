@@ -48,13 +48,19 @@ now you are ready to use the notification
 
 \Filament\Notifications\Notification::make()
     ->body('Your Message You Like To Send Here!')
-    ->sendToTwilioWhatsapp($user);
+    ->sendToTwilioWhatsapp(
+        user: $user,
+        mediaURL: "https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+    );
 ```
 
 or you can use it from user model direct
 
 ```php
-$user->notifyTwilioWhatsapp('Your Message You Like To Send Here!');
+$user->notifyTwilioWhatsapp(
+    message: 'Your Message You Like To Send Here!',
+    mediaURL: "https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+);
 ```
 
 ## Publish Assets

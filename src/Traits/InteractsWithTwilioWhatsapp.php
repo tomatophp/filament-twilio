@@ -7,12 +7,14 @@ use TomatoPHP\FilamentTwilio\Jobs\NotifyTwilioWhatsappJob;
 trait InteractsWithTwilioWhatsapp
 {
     public function notifyTwilioWhatsapp(
-        string $message
+        string $message,
+        ?string $mediaURL=null,
     )
     {
         dispatch(new NotifyTwilioWhatsappJob([
             'user' => $this,
-            'message' => $message
+            'message' => $message,
+            'mediaURL' => $mediaURL,
         ]));
     }
 }

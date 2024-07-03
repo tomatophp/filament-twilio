@@ -5,10 +5,10 @@ use Illuminate\Database\Eloquent\Model;
 
 {
     /*
-     * @method static notifyTwilioWhatsapp(Model $user)
+     * @method static sendToTwilioWhatsapp(Model $user)
      */
     class Notification
     {
-        public function notifyTwilioWhatsapp(Model $user): static {}
+        public function sendToTwilioWhatsapp(Model $user): static {}
     }
 }

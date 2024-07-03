@@ -48,7 +48,7 @@ now you are ready to use the notification
 
 \Filament\Notifications\Notification::make()
     ->body('Your Message You Like To Send Here!')
-    ->notifyTwilioWhatsapp($user);
+    ->sendToTwilioWhatsapp($user);
 ```
 
 or you can use it from user model direct

@@ -3,11 +3,14 @@
 # Filament Twilio
 
 [![Latest Stable Version](https://poser.pugx.org/tomatophp/filament-twilio/version.svg)](https://packagist.org/packages/tomatophp/filament-twilio)
-[![PHP Version Require](http://poser.pugx.org/tomatophp/filament-twilio/require/php)](https://packagist.org/packages/tomatophp/filament-twilio)
 [![License](https://poser.pugx.org/tomatophp/filament-twilio/license.svg)](https://packagist.org/packages/tomatophp/filament-twilio)
 [![Downloads](https://poser.pugx.org/tomatophp/filament-twilio/d/total.svg)](https://packagist.org/packages/tomatophp/filament-twilio)
 
 Send Whatsapp messages using Twilio and native filament Notification Facade class
+
+## Screenshots
+
+![Message](https://raw.githubusercontent.com/tomatophp/filament-twilio/master/arts/message.png)
 
 ## Installation
 
@@ -71,26 +74,6 @@ you can publish config file by use this command
 php artisan vendor:publish --tag="filament-twilio-config"
 ```
 
-## Support
+## Other Filament Packages
 
-you can join our discord server to get support [TomatoPHP](https://discord.gg/Xqmt35Uh)
-
-## Docs
-
-you can check docs of this package on [Docs](https://docs.tomatophp.com/filament/filament-twilio)
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Security
-
-Please see [SECURITY](SECURITY.md) for more information about security.
-
-## Credits
-
-- [Fady Mondy](https://wa.me/+201207860084)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+Checkout our [Awesome TomatoPHP](https://github.com/tomatophp/awesome)

@@ -12,6 +12,15 @@ Send Whatsapp messages using Twilio and native filament Notification Facade clas
 
 ![Message](https://raw.githubusercontent.com/tomatophp/filament-twilio/master/arts/message.png)
 
+## Requirements
+
+| Package version | Filament | Laravel     | PHP  |
+|-----------------|----------|-------------|------|
+| 5.x             | 5.x      | 12.x, 13.x  | 8.2+ |
+| 1.x             | 3.x      | 10.x, 11.x  | 8.1+ |
+
+The Filament v3 line continues on the [`v3`](https://github.com/tomatophp/filament-twilio/tree/v3) branch.
+
 ## Installation
 
 ```bash
@@ -33,6 +42,8 @@ then clear you cache
 ```bash
 php artisan config:cache
 ```
+
+Messages are sent from a queued job to the model's `phone` column (E.164 format, for example `+201000000000`). Users without a phone number are skipped, and nothing is sent until the SID, token and sender number are configured.
 
 now on your User model add this trait
 
@@ -72,6 +83,14 @@ you can publish config file by use this command
 
 ```bash
 php artisan vendor:publish --tag="filament-twilio-config"
+```
+
+## Testing
+
+The Twilio client is resolved from the container, so you can swap it in your own tests (the package suite uses a fake `Twilio\Http\Client` and never calls Twilio):
+
+```bash
+composer test
 ```
 
 ## Other Filament Packages

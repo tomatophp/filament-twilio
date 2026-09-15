@@ -5,29 +5,30 @@ namespace TomatoPHP\FilamentTwilio;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-
+use Twilio\Rest\Client;
 
 class FilamentTwilioServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //Register Config file
-        $this->mergeConfigFrom(__DIR__.'/../config/filament-twilio.php', 'filament-twilio');
+        $this->mergeConfigFrom(__DIR__ . '/../config/filament-twilio.php', 'filament-twilio');
 
-        //Publish Config
         $this->publishes([
-           __DIR__.'/../config/filament-twilio.php' => config_path('filament-twilio.php'),
+            __DIR__ . '/../config/filament-twilio.php' => config_path('filament-twilio.php'),
         ], 'filament-twilio-config');
 
+        $this->app->bind(Client::class, fn (): Client => new Client(
+            config('filament-twilio.twilio_sid'),
+            config('filament-twilio.twilio_token'),
+        ));
     }
 
     public function boot(): void
     {
-        Notification::macro('sendToTwilioWhatsapp', function (Model $user, ?string $mediaURL=null): static
-        {
+        Notification::macro('sendToTwilioWhatsapp', function (Model $user, ?string $mediaURL = null): static {
             /** @var Notification $this */
             $user->notifyTwilioWhatsapp(
-                message: $this->body,
+                message: (string) ($this->getBody() ?: $this->getTitle()),
                 mediaURL: $mediaURL
             );
 

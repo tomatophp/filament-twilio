@@ -2,6 +2,12 @@
     "name": "tomatophp/filament-twilio",
     "type": "library",
     "description": "Send Whatsapp messages using Twilio and native filament Notification Facade class",
+    "homepage": "https://tomatophp.com/en/plugins/filament-twilio",
+    "support": {
+        "issues": "https://github.com/tomatophp/filament-twilio/issues",
+        "source": "https://github.com/tomatophp/filament-twilio",
+        "docs": "https://tomatophp.com/en/plugins/filament-twilio"
+    },
     "keywords": [
         "php",
         "laravel",
